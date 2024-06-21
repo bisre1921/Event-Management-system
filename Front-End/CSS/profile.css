@@ -1,0 +1,122 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: relative;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.logout-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.logout-button {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.logout-button:hover {
+    background: #c82333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background: blueviolet;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: blueviolet;
+}
+
+.liked-events, .commented-events, .booked-events {
+    margin-bottom: 20px;
+}
+
+.liked-events h2, .commented-events h2, .booked-events h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.event-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.event {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.event h3 {
+    font-size: 18px;
+    color: blueviolet;
+    margin: 0 0 10px 0;
+}
+
+.event p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.event i {
+    color: #777;
+    margin-right: 5px;
+}
