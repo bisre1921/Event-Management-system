@@ -16,6 +16,17 @@ if (!isset($_SESSION['user_username'])) {
 
 $username = $_SESSION['user_username'];
 
+// Increment view count
+$increment_view_sql = "UPDATE events SET ViewCount = ViewCount + 1 WHERE EventID = ?";
+$increment_stmt = $conn->prepare($increment_view_sql);
+if ($increment_stmt === false) {
+    die('Prepare failed: ' . htmlspecialchars($conn->error));
+}
+$increment_stmt->bind_param("i", $event_id);
+$increment_stmt->execute();
+$increment_stmt->close();
+
+// Retrieve event details
 $sql = "SELECT * FROM events WHERE EventID = $event_id";
 $result = $conn->query($sql);
 
@@ -26,6 +37,7 @@ if ($result->num_rows > 0) {
     exit();
 }
 
+// Retrieve comments for the event
 $comment_sql = "SELECT * FROM eventcomment WHERE EventID = $event_id AND ParentCommentID IS NULL ORDER BY CommentDateTime DESC";
 $comment_result = $conn->query($comment_sql);
 $comments = [];
@@ -61,11 +73,7 @@ $formattedDate = $eventDate->format('F j');
         </div>
         <div class="event-detail">
             <div class="event-image">
-                <!-- <img src="../assets/background.png" alt="Event Image"> -->
-                
-                    <?php echo '<img src="./' . htmlspecialchars($event['EventImage']) . '" alt="Event Image">'; ?>
-                
-                
+                <?php echo '<img src="./' . htmlspecialchars($event['EventImage']) . '" alt="Event Image">'; ?>
             </div>
             <div class="event-info">
                 <table>
@@ -123,14 +131,13 @@ $formattedDate = $eventDate->format('F j');
                     <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                     <label for="comment">Comment:</label>
                     <textarea id="comment" name="comment" rows="4" required></textarea>
-                    
                     <button type="submit">Submit Comment</button>
                 </form>
             </div>
             <div id="comments" class="comments" style="display: none;">
                 <?php foreach ($comments as $comment): ?>
                     <div class="comment">
-                        <p><strong> <i class="fa-solid fa-user"></i> <?php echo htmlspecialchars($comment['UserUsername']); ?></strong> <em><?php echo htmlspecialchars($comment['CommentDateTime']); ?></em></p>
+                        <p><strong><i class="fa-solid fa-user"></i> <?php echo htmlspecialchars($comment['UserUsername']); ?></strong> <em><?php echo htmlspecialchars($comment['CommentDateTime']); ?></em></p>
                         <p><?php echo htmlspecialchars_decode(htmlspecialchars($comment['Comment'])); ?></p>
                     </div>
                 <?php endforeach; ?>
@@ -144,13 +151,10 @@ $formattedDate = $eventDate->format('F j');
                 <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
-                
                 <button type="submit">Book Now</button>
             </form>
         </div>

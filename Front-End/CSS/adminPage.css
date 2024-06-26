@@ -646,3 +646,97 @@ textarea {
     opacity: 1;
   }
 }
+
+.metrics-box {
+  background-color: #fff;
+  padding: 20px;
+  height: 100vh;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.metrics-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.metrics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.event-box {
+  background-color: #ffffff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.event-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, blueviolet, rgb(92, 70, 113));
+  border-radius: 10px 10px 0 0;
+}
+
+.event-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.event-box h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.event-box p {
+  margin: 10px 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.metric-title {
+  font-weight: bold;
+  color: #444;
+}
+
+.metric-value {
+  float: right;
+  color: #007bff;
+  font-weight: bold;
+}
+.generate-report-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.generate-report-button:hover {
+  background-color: #6b34c2;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}

@@ -1,5 +1,5 @@
 <?php
-session_start();
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,12 @@ session_start();
                     // echo '<img src="../HTML(PHP)/uploads/' . htmlspecialchars($row['EventImage']) . '" alt="Event Image">';
                     // echo '<img src=\"../HTML(PHP)/uploads/{$row['EventImage']}\">'
                     echo "<img src=\"./{$row['EventImage']}\">";
-                    echo '<h3>' . htmlspecialchars($row['EventDescription']) . '</h3>';
+                    $eventDescription = htmlspecialchars($row['EventDescription']);
+                    $maxDescriptionLength = 100; // Set the maximum length of the description
+                    if (strlen($eventDescription) > $maxDescriptionLength) {
+                        $eventDescription = substr($eventDescription, 0, $maxDescriptionLength) . "...";
+                    }
+                    echo '<h3>' . $eventDescription . '</h3>';
                     echo '<div class="event-time-location">';
                     echo '<p> <i class="fa-solid fa-calendar-days icon"></i>' . htmlspecialchars($row['EventDateTime']) . '</p>';
                     echo '<p> <i class="fa-solid fa-location-dot icon"></i>'  . htmlspecialchars($row['Location']) . '</p>';

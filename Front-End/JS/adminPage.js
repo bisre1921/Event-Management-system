@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     $(".toggleBox").click(function() {
         $(this).toggleClass('active');
@@ -5,7 +6,7 @@ $(document).ready(function() {
     });
 
     function hideAllSections() {
-        $('.fullInfo, .ADDEvent, .expireEvent, .UpcomingEvent, .comment-section, .comment-form').slideUp(400).addClass('enactive');
+        $('.fullInfo, .ADDEvent, .expireEvent, .UpcomingEvent, .comment-section, .reply-form , .Chart' ).slideUp(400).addClass('enactive');
     }
 
     $('.addEventButton-btn').click(function() {
@@ -18,9 +19,16 @@ $(document).ready(function() {
         $('.fullInfo').slideDown(400).removeClass('enactive');
     });
 
-    $('.comment').click(function() {
+    $('.summary').click(function(){
+        console.log("Summary button clicked");
         hideAllSections();
-        $('.comment-section, .comment-form').slideDown(400).removeClass('enactive');
+        $('.Chart').slideDown(400).removeClass('enactive');
+    });
+    
+    $('.comment').click(function() {
+        console.log("Comment button clicked");
+        hideAllSections();
+        $('.comment-section, .reply-form').slideDown(400).removeClass('enactive');
     });
 
     $('.Expire').click(function() {
@@ -78,7 +86,6 @@ $(document).ready(function() {
             valid = false;
             errorMessage += 'Writer Username is required.\n';
         }
-
         // If the form is not valid, prevent submission and show error message
         if (!valid) {
             alert(`Please correct the following errors:\n\n${errorMessage}`);
@@ -111,7 +118,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#editEventForm').on('submit', function(e) {
+$('#editEventForm').on('submit', function(e) {
         e.preventDefault();
         var formData = new FormData(this);
         $.ajax({
